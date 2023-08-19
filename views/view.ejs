@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+        .card {
+            background-color: #333;
+            color: white;
+            border: none;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            height: 300px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .card-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .add-btn {
+            background-color: #28a745;
+        }
+
+        .edit-btn {
+            background-color: #ffc107;
+        }
+
+        .container {
+            padding-top: 50px;
+        }
+
+        .d-flex {
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="container mx-auto">
+            <div class="row align-items-center vh-100 justify-content-center">
+                <form action="/viewData" class="d-flex">
+                    <% data.map((val)=> { %>
+                        <div class="card" style="width: 18rem; margin: 0 15px;">
+                            <img src="<%= val.image %>" class="card-img-top" style="height: 300px;" />
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%= val.name %>
+                                </h5>
+                                <p class="card-text">
+                                    <%= val.description %>
+                                </p>
+                                <p class="card-text">Price : $<%= val.price %>
+                                </p>
+                                <a href="/deleteData?id=<%= val.id %>" class="btn btn-primary">Delete</a>
+                                <a href="/editData?id=<%= val.id %>" class="btn btn-primary">Edit</a>
+                            </div>
+                        </div>
+                        <% }) %>
+                </form>
+                <button
+                    style="background-color: black; outline: none; border: none; width: 300px; padding: 10px; border-radius: 12px;">
+                    <a href="/" style="text-decoration: none; color: white;">Add Movie</a>
+                </button>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
